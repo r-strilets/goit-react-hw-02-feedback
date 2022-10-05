@@ -9,22 +9,29 @@ export class Feedback extends Component {
   onClickIncrementGood = () => {
     this.setState(prevState => {
       return {
-        good: this.state.good + 1,
+        good: prevState.good + 1,
       };
     });
   };
   onClickIncrementNeutral = () => {
     this.setState(prevState => {
       return {
-        neutral: this.state.neutral + 1,
+        neutral: prevState.neutral + 1,
       };
     });
   };
   onClickIncrementBad = () => {
-    this.setState({
-      bad: this.state.bad + 1,
+    this.setState(prevState => {
+      return {
+        bad: prevState.bad + 1,
+      };
     });
   };
+  countTotalFeedback = () => {
+    // const { good, neutral, bad } = this.state;
+    return this.state.good + this.state.neutral + this.state.bad;
+  };
+
   render() {
     const { good, neutral, bad } = this.state;
     return (
@@ -38,6 +45,7 @@ export class Feedback extends Component {
           <li>Good: {good}</li>
           <li>Neatural: {neutral}</li>
           <li>Bad: {bad}</li>
+          <li>Tolat: {this.countTotalFeedback}</li>
         </ul>
       </>
     );
