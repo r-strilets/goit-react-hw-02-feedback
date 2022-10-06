@@ -8,7 +8,7 @@ export class FeedbackOptions extends Component {
           Good😀
         </button>
         <button onClick={onLeaveFeedback} name="neutral">
-          Neatural😐
+          Neautral😐
         </button>
         <button onClick={onLeaveFeedback} name="bad">
           Bad🙁
