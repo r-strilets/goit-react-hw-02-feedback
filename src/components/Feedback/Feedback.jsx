@@ -12,28 +12,47 @@ export class Feedback extends Component {
         good: prevState.good + 1,
       };
     });
+    this.countTotalFeedback();
   };
+
   onClickIncrementNeutral = () => {
     this.setState(prevState => {
       return {
         neutral: prevState.neutral + 1,
       };
     });
+    this.countTotalFeedback();
   };
+
   onClickIncrementBad = () => {
     this.setState(prevState => {
       return {
         bad: prevState.bad + 1,
       };
     });
+    this.countTotalFeedback();
   };
+
   countTotalFeedback = () => {
-    // const { good, neutral, bad } = this.state;
-    return this.state.good + this.state.neutral + this.state.bad;
+    this.setState(prevState => {
+      return {
+        total: prevState.good + prevState.neutral + prevState.bad,
+      };
+    });
+    this.countPositiveFeedbackPercentage();
+  };
+
+  countPositiveFeedbackPercentage = () => {
+    this.setState(prevState => {
+      return {
+        positivePercent: Math.round((prevState.good / prevState.total) * 100),
+      };
+    });
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    const { good, neutral, bad, total, positivePercent } = this.state;
+
     return (
       <>
         <h2>Please leave feedback</h2>
@@ -45,7 +64,8 @@ export class Feedback extends Component {
           <li>Good: {good}</li>
           <li>Neatural: {neutral}</li>
           <li>Bad: {bad}</li>
-          <li>Tolat: {this.countTotalFeedback}</li>
+          <li>Total: {total ?? 0}</li>
+          <li>Positive feedback: {positivePercent ?? 0}%</li>
         </ul>
       </>
     );
