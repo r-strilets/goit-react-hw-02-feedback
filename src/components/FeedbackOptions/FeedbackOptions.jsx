@@ -5,13 +5,13 @@ export class FeedbackOptions extends Component {
     return (
       <>
         <button onClick={onLeaveFeedback} name="good">
-          Good
+          Good😀
         </button>
         <button onClick={onLeaveFeedback} name="neutral">
-          Neatural
+          Neatural😐
         </button>
         <button onClick={onLeaveFeedback} name="bad">
-          Bad
+          Bad🙁
         </button>
       </>
     );
